@@ -37,6 +37,9 @@ func NewPostgresConnection() *DB {
 
 // makes all neccessary migrations
 func SyncDatabase(db *DB) {
+	// if err := db.Migrator().DropTable(&model.Entry{}); err != nil {
+	// 	log.Printf("Table already exists: %v", err)
+	// }
 	if err := db.AutoMigrate(&model.Entry{}); err != nil {
 		log.Printf("Table already exists: %v", err)
 	}
